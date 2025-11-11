@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eye-Catching Calculator</title>
+    <style>
+        /* Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 400px;
+            transition: all 0.3s ease;
+        }
+
+        .calculator:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+        }
+
+        .display-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            height: 70px;
+            box-shadow: inset 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        #preview {
+            color: #ffd700;
+            font-size: 28px;
+            text-align: left;
+            flex: 2;
+            overflow-x: auto;
+        }
+
+        #display {
+            color: #fff;
+            font-size: 28px;
+            text-align: right;
+            flex: 1;
+            overflow-x: auto;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        button {
+            padding: 20px;
+            font-size: 22px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            color: #fff;
+            box-shadow: 0 8px rgba(0,0,0,0.2);
+            background: linear-gradient(145deg, #6a11cb, #2575fc);
+        }
+
+        button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px rgba(0,0,0,0.25);
+        }
+
+        button:active {
+            transform: translateY(2px) scale(0.97);
+            box-shadow: 0 4px rgba(0,0,0,0.2);
+        }
+
+        .operator {
+            background: linear-gradient(145deg, #ff416c, #ff4b2b);
+        }
+
+        .operator:hover {
+            background: linear-gradient(145deg, #ff5e7e, #ff602d);
+        }
+
+        .equal {
+            background: linear-gradient(145deg, #00c6ff, #0072ff);
+            grid-column: span 2;
+        }
+
+        .equal:hover {
+            background: linear-gradient(145deg, #33d6ff, #1a5eff);
+        }
+
+        .clear {
+            background: linear-gradient(145deg, #ff5f6d, #ffc371);
+        }
+
+        .clear:hover {
+            background: linear-gradient(145deg, #ff7a82, #ffd38a);
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+
+        #preview::-webkit-scrollbar,
+        #display::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        #preview::-webkit-scrollbar-thumb,
+        #display::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 2px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display-container">
+            <div id="preview"></div>
+            <div id="display"></div>
+        </div>
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button onclick="deleteLast()">Del</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+            <button class="operator" onclick="appendToDisplay('*')">*</button>
+
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="equal" onclick="calculate()">=</button>
+
+            <button class="zero" onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display'); // result (right)
+        const preview = document.getElementById('preview'); // expression (left)
+
+        function appendToDisplay(value) {
+            preview.textContent += value; // append to expression
+            updateResult();
+        }
+
+        function clearDisplay() {
+            preview.textContent = '';
+            display.textContent = '';
+        }
+
+        function deleteLast() {
+            preview.textContent = preview.textContent.slice(0, -1);
+            updateResult();
+        }
+
+        function updateResult() {
+            try {
+                if (preview.textContent) {
+                    let result = eval(preview.textContent);
+                    display.textContent = result;
+                } else {
+                    display.textContent = '';
+                }
+            } catch {
+                display.textContent = '';
+            }
+        }
+
+        function calculate() {
+            try {
+                let result = eval(preview.textContent);
+                display.textContent = result; // keep expression on left
+            } catch {
+                display.textContent = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
