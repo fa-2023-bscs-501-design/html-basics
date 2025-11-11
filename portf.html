@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Simple Portfolio</title>
+  <style>
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  background-color: #007acc;
+  color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+/* Class and ID Selectors */
+#main-title {
+  font-size: 2em;
+}
+
+.tagline {
+  font-style: italic;
+}
+
+/* Section Styling */
+.about,
+.projects {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Project Cards with Float */
+.project-card {
+  float: left;
+  width: 45%;
+  margin: 2.5%;
+  padding: 10px;
+  background-color: #e0e0e0;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+/* Clearfix */
+.projects::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+</style>
+</head>
+<body>
+
+  <header>
+    <h1>Meerab Asif</h1>
+    <p class="tagline">Beginner Web Developer</p>
+  </header>
+
+  <div class="section" id="about">
+    <h2>About Me</h2>
+    <p>Hello! I am learning web development. I love to make simple web projects using HTML, CSS, and JavaScript.</p>
+  </div>
+
+  <div class="section" id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>This website shows my basic information and projects.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Weather App</h3>
+      <p>A simple app that shows the weather of a city.</p>
+    </div>
+  </div>
+
+  <div class="section" id="weather">
+    <h2>Weather App Demo</h2>
+
+    <input type="text" id="city" placeholder="Enter city" />
+    <button onclick="getWeather()">Get Weather</button>
+    <p id="result"></p>
+  </div>
+
+  <footer>
+    <p>© 2025 Meerab Simple Portfolio</p>
+  </footer>
+
+  <script>
+    function getWeather() {
+      var city = document.getElementById("city").value;
+      var result = document.getElementById("result");
+      result.textContent = "Weather of " + city + " coming soon...";
+    }
+  </script>
+
+</body>
+</html>

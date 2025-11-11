@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic JavaScript and Data Types</title>
+</head>
+<body>
+    <script>
+        
+        document.write("<h2>Hello, JavaScript!</h2>");
+
+        
+        let a = 10;
+        let b = 15;
+        let sum = a + b;
+        document.write("<p>The sum of " + a + " and " + b + " is = " + sum + "</p>");
+
+        let c = 50;
+        let d = 25;
+        let sub = c - d;
+        document.write("<p>The difference of " + c + " and " + d + " is = " + sub + "</p>");
+
+        
+        let text = "Welcome to JavaScript!";
+        
+        
+        let number = 42;
+
+        
+        let isActive = false;
+
+        
+        let colors = ["red", "green", "blue", "yellow"];
+
+        
+        let user = {
+            name: "Alice",
+            age: 25,
+            city: "New York"
+        };
+
+        
+        let emptyValue = null;
+
+    
+        let notAssigned;
+
+          document.write("<h3>JavaScript Data Types with Examples:</h3>");
+        document.write("<p><b>1. String:</b> " + text + " (Type: " + typeof text + ")</p>");
+        document.write("<p><b>2. Number:</b> " + number + " (Type: " + typeof number + ")</p>");
+        document.write("<p><b>3. Boolean:</b> " + isActive + " (Type: " + typeof isActive + ")</p>");
+        document.write("<p><b>4. Array:</b> " + colors.join(", ") + " (Type: " + typeof colors + ")</p>");
+        document.write("<p><b>5. Object:</b> Name = " + user.name + ", Age = " + user.age + ", City = " + user.city + " (Type: " + typeof user + ")</p>");
+        document.write("<p><b>6. Null:</b> " + emptyValue + " (Type: " + typeof emptyValue + ")</p>");
+        document.write("<p><b>7. Undefined:</b> " + notAssigned + " (Type: " + typeof notAssigned + ")</p>");
+      
+
+        function great(){
+            document.write("hello javascript");
+        }
+        great();
+
+        function great(a,b){
+            let sum=a+b;
+            document.write("<p>The sum of " + a + " and " + b + " is = " + sum + "</p>");
+        
+        }
+        great(10,15);
+
+         function multiply(a,b){
+            return a*b;
+        }
+        let result=multiply(10,15);
+        multiply(10,15);
+        document.write("<p>The product of " + a + " and " + b + " is = " + result + "</p>");
+
+        const Meerab= function(){
+            document.write("<h2>Hello World!</h2>");
+        }
+        Meerab();
+     
+       const multiply2 = (x, y) => x * y;
+        document.write("The result of 5 * 3 is = " + multiply2(5, 3) + "<br><br>");
+
+    </script>
+</body>
+</html>
+
